@@ -26,26 +26,22 @@ public class Datum implements Serializable {
     @Column
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name="demo_id",nullable=false)
-    private Demo demo;
+
 
     public Datum(){
 
     }
-    public Datum( LocalDateTime start, LocalDateTime einde, String status, Demo demo ) {
+    public Datum( LocalDateTime start, LocalDateTime einde, String status ) {
         this.start = start;
         this.einde = einde;
         this.status = status;
-        this.demo = demo;
     }
 
-    public Datum( int id, LocalDateTime start, LocalDateTime einde, String status, Demo demo ) {
+    public Datum( int id, LocalDateTime start, LocalDateTime einde, String status ) {
         this.id = id;
         this.start = start;
         this.einde = einde;
         this.status = status;
-        this.demo = demo;
     }
 
     public int getId() {
@@ -62,10 +58,6 @@ public class Datum implements Serializable {
 
     public String getStatus() {
         return status;
-    }
-
-    public Demo getDemo() {
-        return demo;
     }
 
 
@@ -85,8 +77,5 @@ public class Datum implements Serializable {
         this.status = status;
     }
 
-    public void setDemo(Demo demo) {
-        this.demo = demo;
-    }
 
 }

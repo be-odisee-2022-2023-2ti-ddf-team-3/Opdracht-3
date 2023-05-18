@@ -13,7 +13,7 @@ public interface DemoPlannerSessieService {
 
     public Datum zoekDatumMetId(int id);
 
-    public Datum voegDatumToe(LocalDateTime naam, LocalDateTime adres, String status, Demo datums);
+    public Datum voegDatumToe(LocalDateTime naam, LocalDateTime adres, String status);
 
     Datum updateDatum(Datum datum);
 

@@ -14,9 +14,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@Service("DemoPlannerSessieService")
-@Transactional(propagation = Propagation.SUPPORTS, readOnly=true)
+@Service
 public class DemoPlannerSessieServiceImpl implements DemoPlannerSessieService {
+
+    @Autowired
+    private DatumRepository datumRepository = null;
+    public List<Datum> geefAlleDatums() {
+        return datumRepository.findAll();
+    }
 
     @Transactional(propagation= Propagation.REQUIRED,readOnly=false)
     public Datum zoekDatumMetId(int id){
@@ -29,14 +34,14 @@ public class DemoPlannerSessieServiceImpl implements DemoPlannerSessieService {
     }
 
     @Transactional(propagation= Propagation.REQUIRED,readOnly=false)
-    public Datum voegDatumToe( LocalDateTime start, LocalDateTime einde, String status, Demo demo ) {
+    public Datum voegDatumToe( LocalDateTime start, LocalDateTime einde, String status ) {
 
-        return datumRepository.save( createDatum( start, einde, status, demo ));
+        return datumRepository.save( createDatum( start, einde, status ));
     }
 
-    private Datum createDatum( LocalDateTime start, LocalDateTime einde, String status, Demo demo ) {
+    private Datum createDatum( LocalDateTime start, LocalDateTime einde, String status) {
 
-        return new Datum( start, einde, status, demo );
+        return new Datum( start, einde, status );
     }
 
     @Override
