@@ -1,4 +1,4 @@
-package be.odisee.jzzz;
+package be.odisee.msPersoon;
 
 import org.testng.annotations.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JzzzLedenApplicationTests {
+public class RisePersonenApplicationTests {
 
 	@Test
 	public void contextLoads() {
