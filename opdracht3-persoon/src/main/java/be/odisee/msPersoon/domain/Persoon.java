@@ -6,6 +6,7 @@ import java.util.Date;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "personen")
 public class Persoon implements Serializable {
 
 //    private static final long serialVersionUID = 1L;

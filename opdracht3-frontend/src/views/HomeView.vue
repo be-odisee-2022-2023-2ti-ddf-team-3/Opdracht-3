@@ -10,42 +10,42 @@
         <th>rol</th>
         <th>acties</th>
       </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr v-for="person in persons" :key="person.id">
+        <td>{{ person.id }}</td>
+        <td>{{ person.voornaam }} {{ person.familienaam }}</td>
+        <td>{{ person.emailadres }}</td>
+        <td>{{ person.paswoord }}</td>
+        <td><!-- Display person's role here --></td>
+        <td><!-- Display actions for the person here --></td>
       </tr>
     </table>
   </main>
 </template>
 <script>
-export default {
-  props: {
-    msg: String
-  },
+import axios from "axios";
 
+export default {
+  data() {
+    return {
+      persons: []
+    };
+  },
+  created() {
+    this.fetchPersons();
+  },
   methods: {
-    fetchData() {
-      fetch('https://localhost/8080/personen', {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-host': 'random-facts2.p.rapidapi.com',
-          'x-rapidapi-key': 'Your -RapidAPI-Hub-Key'
-        }
-      })
+    fetchPersons() {
+      axios
+        .get("http://localhost:9081/persoons")
         .then(response => {
-          response.json().then(res => console.log(res));
+          const result = response.data;
+          const persons = result._embedded.persoons;
+          this.persons = persons;
         })
-        .catch(err => {
-          console.error(err);
+        .catch(error => {
+          console.error(error);
         });
     }
-  },
-  beforeMount() {
-    this.fetchData()
   }
-};
+}
 </script>

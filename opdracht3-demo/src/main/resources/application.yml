@@ -4,8 +4,6 @@ spring:
     username: brainstorm13user
     password: user123
   jpa:
-    hibernate:
-      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
